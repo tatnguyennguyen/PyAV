@@ -228,3 +228,7 @@ cdef class OutputContainer(Container):
         with nogil:
             ret = lib.av_interleaved_write_frame(self.ptr, self.packet_ptr)
         self.err_check(ret)
+
+    def flush(self):
+        lib.av_write_frame(self.ptr, NULL)
+        lib.avio_flush(self.ptr.pb)
