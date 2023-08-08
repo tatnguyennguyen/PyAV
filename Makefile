@@ -76,7 +76,7 @@ clean-build:
 
 clean-sandbox:
 	- rm -rf sandbox/201*
-	- rm sandbox/last
+	- rm -rf sandbox/last
 
 clean-src:
 	- rm -rf src
