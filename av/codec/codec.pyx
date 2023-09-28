@@ -52,7 +52,7 @@ Capabilities = define_enum('Capabilities', 'av.codec', (
         """Codec uses get_buffer() for allocating buffers and supports custom allocators.
         If not set, it might not use get_buffer() at all or use operations that
         assume the buffer was allocated by avcodec_default_get_buffer."""),
-    ('TRUNCATED', lib.AV_CODEC_CAP_TRUNCATED),
+    # ('TRUNCATED', lib.AV_CODEC_CAP_TRUNCATED),
     ('HWACCEL', 1 << 4),
     ('DELAY', lib.AV_CODEC_CAP_DELAY,
         """Encoder or decoder requires flushing with NULL input at the end in order to
@@ -102,8 +102,8 @@ Capabilities = define_enum('Capabilities', 'av.codec', (
         """Codec supports slice-based (or partition-based) multithreading."""),
     ('PARAM_CHANGE', lib.AV_CODEC_CAP_PARAM_CHANGE,
         """Codec supports changed parameters at any point."""),
-    ('AUTO_THREADS', lib.AV_CODEC_CAP_AUTO_THREADS,
-        """Codec supports avctx->thread_count == 0 (auto)."""),
+    # ('AUTO_THREADS', lib.AV_CODEC_CAP_AUTO_THREADS,
+    #     """Codec supports avctx->thread_count == 0 (auto)."""),
     ('VARIABLE_FRAME_SIZE', lib.AV_CODEC_CAP_VARIABLE_FRAME_SIZE,
         """Audio encoder supports receiving a different number of samples in each call."""),
     ('AVOID_PROBING', lib.AV_CODEC_CAP_AVOID_PROBING,
@@ -114,10 +114,10 @@ Capabilities = define_enum('Capabilities', 'av.codec', (
         the stream.
         A decoder marked with this flag should only be used as last resort
         choice for probing."""),
-    ('INTRA_ONLY', lib.AV_CODEC_CAP_INTRA_ONLY,
-        """Codec is intra only."""),
-    ('LOSSLESS', lib.AV_CODEC_CAP_LOSSLESS,
-        """Codec is lossless."""),
+    # ('INTRA_ONLY', lib.AV_CODEC_CAP_INTRA_ONLY,
+    #     """Codec is intra only."""),
+    # ('LOSSLESS', lib.AV_CODEC_CAP_LOSSLESS,
+    #     """Codec is lossless."""),
     ('HARDWARE', lib.AV_CODEC_CAP_HARDWARE,
         """Codec is backed by a hardware implementation. Typically used to
         identify a non-hwaccel hardware decoder. For information about hwaccels, use
@@ -312,7 +312,7 @@ cdef class Codec(object):
 
     draw_horiz_band = capabilities.flag_property('DRAW_HORIZ_BAND')
     dr1 = capabilities.flag_property('DR1')
-    truncated = capabilities.flag_property('TRUNCATED')
+    # truncated = capabilities.flag_property('TRUNCATED')
     hwaccel = capabilities.flag_property('HWACCEL')
     delay = capabilities.flag_property('DELAY')
     small_last_frame = capabilities.flag_property('SMALL_LAST_FRAME')
@@ -324,7 +324,7 @@ cdef class Codec(object):
     frame_threads = capabilities.flag_property('FRAME_THREADS')
     slice_threads = capabilities.flag_property('SLICE_THREADS')
     param_change = capabilities.flag_property('PARAM_CHANGE')
-    auto_threads = capabilities.flag_property('AUTO_THREADS')
+    # auto_threads = capabilities.flag_property('AUTO_THREADS')
     variable_frame_size = capabilities.flag_property('VARIABLE_FRAME_SIZE')
     avoid_probing = capabilities.flag_property('AVOID_PROBING')
     # intra_only = capabilities.flag_property('INTRA_ONLY')  # Dupes.
